@@ -11,7 +11,8 @@ class HtmlQuina extends AbstractReaderHtmlLoteria
             ->setDezenasConcurso([2, 3, 4, 5, 6])
             ->setArrecadacaoConcurso(7)
             ->setTotalGanhadoresConcurso(8)
-            ->setValorAcumuladoConcurso(15);
+            ->setValorAcumuladoConcurso(17)
+            ->setFaixasPremiosConcurso([8,11,12,13,14,15]);
 
         parent::loadData($this->numbersNode);
 

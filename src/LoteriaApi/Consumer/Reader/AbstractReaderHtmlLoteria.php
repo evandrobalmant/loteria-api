@@ -32,7 +32,7 @@ abstract class AbstractReaderHtmlLoteria implements IReaderHtml
 
         for ($concursoHtml = 1; $concursoHtml < $trs->length; $concursoHtml++) {
             $tds = $trs->item($concursoHtml)->getElementsByTagName('td');
-            
+
             $nrconcurso = $tds->item($numbersNode->getNumberConcurso())->nodeValue;
 
             $data = $tds->item($numbersNode->getDataConcurso())->nodeValue;
@@ -41,6 +41,7 @@ abstract class AbstractReaderHtmlLoteria implements IReaderHtml
             $totalGanhadores = $tds->item($numbersNode->getTotalGanhadoresConcurso())->nodeValue;
             $acumulado = $tds->item($numbersNode->getTotalGanhadoresConcurso())->nodeValue === '0' ? 'SIM' : 'NÃO';
             $valorAcumulado = $tds->item($numbersNode->getValorAcumuladoConcurso())->nodeValue;
+            $faixasPremios = $this->loadFaixas($numbersNode, $tds);
 
             $this->data[$nrconcurso] = [
                 'data' => $data,
@@ -49,6 +50,7 @@ abstract class AbstractReaderHtmlLoteria implements IReaderHtml
                 'total_ganhadores' => $totalGanhadores,
                 'acumulado' => $acumulado,
                 'valor_acumulado' => $valorAcumulado,
+                'faixas_premios' => $faixasPremios,
             ];
         }
     }
@@ -62,5 +64,16 @@ abstract class AbstractReaderHtmlLoteria implements IReaderHtml
         }
 
         return $dezenas;
+    }
+
+    private function loadFaixas(LoteriaNumbersNode $numbersNode, DOMNodeList $tds)
+    {
+        $faixas = [];
+
+        foreach ($numbersNode->getFaixasPremiosConcurso() as $faixaPremioConcurso) {
+            $faixas[] = $tds->item($faixaPremioConcurso)->nodeValue;
+        }
+        
+        return $faixas;
     }
 }

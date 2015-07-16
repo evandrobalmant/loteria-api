@@ -11,7 +11,8 @@ class HtmlLotofacil extends AbstractReaderHtmlLoteria
             ->setDezenasConcurso([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
             ->setArrecadacaoConcurso(17)
             ->setTotalGanhadoresConcurso(18)
-            ->setValorAcumuladoConcurso(28);
+            ->setValorAcumuladoConcurso(32)
+            ->setFaixasPremiosConcurso([18,25,21,26,22,27,23,28,24,29]);
 
         parent::loadData($this->numbersNode);
 

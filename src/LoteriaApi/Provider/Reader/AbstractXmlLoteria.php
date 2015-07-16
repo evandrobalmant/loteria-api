@@ -34,6 +34,7 @@ abstract class AbstractXmlLoteria implements IFinder
             $arrayConcursos[$key]['total_ganhadores'] = (string) $children->total_ganhadores;
             $arrayConcursos[$key]['acumulado'] = (string) $children->acumulado;
             $arrayConcursos[$key]['valor_acumulado'] = (string) $children->valor_acumulado;
+            $arrayConcursos[$key]['faixas_premios'] = (array) $children->faixas_premios->children()->faixa;
         }
 
         return $arrayConcursos;
@@ -52,7 +53,7 @@ abstract class AbstractXmlLoteria implements IFinder
         if (!isset($concurso[0])) {
              throw new \InvalidArgumentException("Concurso does not exist");
         }
-        
+
         $concurso = $this->formatResultXpathToConcursoArray($concurso);
 
         return $concurso;
@@ -62,7 +63,7 @@ abstract class AbstractXmlLoteria implements IFinder
     {
         $concurso = $this->getSimpleXml()
             ->xpath("(/concursos/concurso)[last()]");
-        
+
         $concurso = $this->formatResultXpathToConcursoArray($concurso);
 
         return $concurso;

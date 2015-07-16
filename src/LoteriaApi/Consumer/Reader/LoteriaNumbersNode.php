@@ -10,6 +10,7 @@ class LoteriaNumbersNode
     private $arrecadacaoConcurso;
     private $totalGanhadoresConcurso;
     private $valorAcumuladoConcurso;
+    private $faixasPremiosConcurso = [];
 
     public function setNumberConcurso($numberConcurso)
     {
@@ -47,6 +48,12 @@ class LoteriaNumbersNode
         return $this;
     }
 
+    public function setFaixasPremiosConcurso($faixasPremiosConcurso)
+    {
+        $this->faixasPremiosConcurso = $faixasPremiosConcurso;
+        return $this;
+    }
+
     public function getNumberConcurso()
     {
         return $this->numberConcurso;
@@ -75,5 +82,10 @@ class LoteriaNumbersNode
     public function getValorAcumuladoConcurso()
     {
         return $this->valorAcumuladoConcurso;
+    }
+
+    public function getFaixasPremiosConcurso()
+    {
+        return $this->faixasPremiosConcurso;
     }
 }

@@ -11,7 +11,8 @@ class HtmlMegasena extends AbstractReaderHtmlLoteria
             ->setDezenasConcurso([2, 3, 4, 5, 6, 7])
             ->setArrecadacaoConcurso(8)
             ->setTotalGanhadoresConcurso(9)
-            ->setValorAcumuladoConcurso(16);
+            ->setValorAcumuladoConcurso(18)
+            ->setFaixasPremiosConcurso([9,12,13,14,15,16]);
 
         parent::loadData($this->numbersNode);
 
